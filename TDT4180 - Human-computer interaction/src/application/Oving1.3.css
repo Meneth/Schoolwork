@@ -1,0 +1,3 @@
+Line { -fx-stroke-width: 4 }
+Ellipse { -fx-stroke-width: 4; -fx-stroke: BLACK; -fx-fill: null }
+QuadCurve { -fx-stroke-width: 4; -fx-stroke: BLACK; -fx-fill: null }

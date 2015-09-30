@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+	minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" style="-fx-padding: 2">
+	<children>
+		<BorderPane><left><Text text="Purpose: "></Text></left><right><TextField fx:id="purpose"></TextField></right></BorderPane>
+		<BorderPane><left><Text text="Room: "></Text></left><right><TextField fx:id="room"></TextField></right></BorderPane>
+		<BorderPane><left><Text text="Date: "></Text></left><right><TextField promptText="YYYY-MM-DD" fx:id="date"></TextField></right></BorderPane>
+		<BorderPane>
+			<left><HBox><Text text="From: "></Text><TextField prefWidth="80" promptText="HH:MM" fx:id="from"></TextField></HBox></left>
+			<right><HBox><Text text="To: "></Text><TextField prefWidth="80" promptText="HH:MM" fx:id="to"></TextField></HBox></right>
+		</BorderPane>
+		<HBox>
+			<Text text="Repeat freq: "></Text><TextField prefWidth="25" fx:id="repeat" onKeyReleased="#toggleRepeat"></TextField>
+			<Text text="End date: "></Text><TextField prefWidth="80" promptText="YYYY-MM-DD" fx:id="end"  disable="true"></TextField>
+		</HBox>
+		<BorderPane>
+		<right><HBox spacing="3">
+			<Button text="Save" onAction="#save"></Button>
+			<Button text="Discard" onAction="#discard"></Button>
+		</HBox></right>
+		</BorderPane>
+	</children>
+	<stylesheets>
+		<URL value="@Oving2.css" />
+	</stylesheets>
+</VBox>

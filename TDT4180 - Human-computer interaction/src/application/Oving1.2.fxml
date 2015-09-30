@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #c8c9cd">
+	 <children>
+		<Pane prefHeight="215.0" prefWidth="500.0" style="-fx-background-color: #000000;">
+		 <children>
+			<Text layoutX="180.0" layoutY="190.0" text="1,478" fill="#FFFFFF">
+				<font><Font size="120.0" /></font>
+			</Text>
+		</children>
+		</Pane>
+		<GridPane minHeight="615.0">
+			<columnConstraints>
+				<ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
+				<ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
+				<ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
+				<ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints vgrow="ALWAYS" />
+				<RowConstraints vgrow="ALWAYS" />
+				<RowConstraints vgrow="ALWAYS" />
+				<RowConstraints vgrow="ALWAYS" />
+				<RowConstraints vgrow="ALWAYS" />
+			</rowConstraints>
+			<children>
+				<StackPane GridPane.columnIndex="0" GridPane.rowIndex="0"><Text text="C"></Text></StackPane>
+				<StackPane GridPane.columnIndex="1" GridPane.rowIndex="0"><Text text="+/-"></Text></StackPane>
+				<StackPane GridPane.columnIndex="2" GridPane.rowIndex="0"><Text text="\%"></Text></StackPane>
+				<StackPane GridPane.columnIndex="3" GridPane.rowIndex="0" styleClass="orange"><Text text="÷"></Text></StackPane>
+				<StackPane GridPane.columnIndex="0" GridPane.rowIndex="1"><Text text="7"></Text></StackPane>
+				<StackPane GridPane.columnIndex="1" GridPane.rowIndex="1"><Text text="8"></Text></StackPane>
+				<StackPane GridPane.columnIndex="2" GridPane.rowIndex="1"><Text text="9"></Text></StackPane>
+				<StackPane GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="orange"><Text text="x"></Text></StackPane>
+				<StackPane GridPane.columnIndex="0" GridPane.rowIndex="2"><Text text="4"></Text></StackPane>
+				<StackPane GridPane.columnIndex="1" GridPane.rowIndex="2"><Text text="5"></Text></StackPane>
+				<StackPane GridPane.columnIndex="2" GridPane.rowIndex="2"><Text text="6"></Text></StackPane>
+				<StackPane GridPane.columnIndex="3" GridPane.rowIndex="2" styleClass="orange"><Text text="–"></Text></StackPane>
+				<StackPane GridPane.columnIndex="0" GridPane.rowIndex="3"><Text text="1"></Text></StackPane>
+				<StackPane GridPane.columnIndex="1" GridPane.rowIndex="3"><Text text="2"></Text></StackPane>
+				<StackPane GridPane.columnIndex="2" GridPane.rowIndex="3"><Text text="3"></Text></StackPane>
+				<StackPane GridPane.columnIndex="3" GridPane.rowIndex="3" styleClass="orange"><Text text="+"></Text></StackPane>
+				<StackPane GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"><Text text="0" translateX="-62"></Text></StackPane>
+				<StackPane GridPane.columnIndex="2" GridPane.rowIndex="4"><Text text="."></Text></StackPane>
+				<StackPane GridPane.columnIndex="3" GridPane.rowIndex="4" styleClass="orange"><Text text="="></Text></StackPane>
+			</children>
+		</GridPane>
+	 </children>
+	 <stylesheets><URL value="@Oving1.2.css" /></stylesheets>
+</VBox>

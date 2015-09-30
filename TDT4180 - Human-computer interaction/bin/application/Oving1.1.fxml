@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #D3BBA3; -fx-border-width: 1.5; -fx-background-color: #E3C9B0;">
+         <children>
+            <Text fontSmoothingType="LCD" layoutX="108.0" layoutY="79.0" opacity="0.35" stroke="#00000059" strokeType="OUTSIDE" strokeWidth="0.5" text="USD">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#ff2222" fontSmoothingType="LCD" layoutX="266.0" layoutY="86.0" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="10,000">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="25.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@USA.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #D3BBA3; -fx-border-width: 0.75; -fx-background-color: #DAC2AA;">
+         <children>
+            <Text fontSmoothingType="LCD" layoutX="108.0" layoutY="79.0" opacity="0.35" stroke="#00000059" strokeType="OUTSIDE" strokeWidth="0.5" text="JPY">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#404040" fontSmoothingType="LCD" layoutX="244.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="992,815">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="25.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@JAP.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #D3BBA3; -fx-border-width: 0.75; -fx-background-color: #DAC2AA;">
+         <children>
+            <Text fontSmoothingType="LCD" layoutX="108.0" layoutY="79.0" opacity="0.35" stroke="#00000059" strokeType="OUTSIDE" strokeWidth="0.5" text="EUR">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#404040" fontSmoothingType="LCD" layoutX="288.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7,694">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="25.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@EUR.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #D3BBA3; -fx-border-width: 0.75; -fx-background-color: #DAC2AA;">
+         <children>
+            <Pane layoutX="25.0" layoutY="40.0" prefHeight="64.0" prefWidth="64.0" styleClass="roundCorners" />
+            <Text fontSmoothingType="LCD" layoutX="108.0" layoutY="79.0" opacity="0.35" stroke="#00000059" strokeType="OUTSIDE" strokeWidth="0.5" text="GBP">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#404040" fontSmoothingType="LCD" layoutX="288.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6,559">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="25.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@UK.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+	<stylesheets><URL value="@Oving1.1.css" /></stylesheets>
+</VBox>

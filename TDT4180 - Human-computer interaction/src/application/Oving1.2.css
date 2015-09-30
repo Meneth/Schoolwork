@@ -1,0 +1,5 @@
+StackPane { -fx-border-width: 1; -fx-border-color: #000000 }
+.orange { -fx-background-color: #f89111 }
+
+.orange Text { -fx-fill:#FFFFFF }
+StackPane Text  { -fx-font-size:40; -fx-font-smoothing-type:LCD }
