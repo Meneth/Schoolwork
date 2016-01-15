@@ -61,6 +61,7 @@ $RECYCLE.BIN/
 # C++ stuff
 **/Debug/
 **/ipch/
+**/.vs/
 *.sln
 *.sdf
 *.vcxproj*
