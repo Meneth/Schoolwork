@@ -2,6 +2,9 @@
 //
 
 #include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <initializer_list>
 using namespace std;
 
 // a)
@@ -119,8 +122,7 @@ void compareListOfNumbers(double *l, int size) {
 	cout << r[2] << " numbers were greater than 0" << endl; // For consistency this really should be "above", or the first print should be "less than"
 }
 
-int main()
-{
+int main2() {
 	fibonacci(20);
 	triangleNumbersBelow(20);
 	cout << isTriangleNumber(10) << endl;

@@ -65,3 +65,4 @@ $RECYCLE.BIN/
 *.sln
 *.sdf
 *.vcxproj*
+*.opendb
