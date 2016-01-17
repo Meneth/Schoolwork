@@ -140,7 +140,6 @@ void printRealRoots(double a, double b, double c) {
 	double disc = discriminant(a, b, c);
 	if (disc < 0) {
 		cout << "No solution." << endl;
-		return;
 	}
 	else if (disc == 0) {
 		double x = (-b + sqrt(b * b - 4 * a * c)) / (2 * a);
