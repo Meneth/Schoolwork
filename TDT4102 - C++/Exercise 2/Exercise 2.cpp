@@ -178,9 +178,8 @@ void calculateLoanPayments() {
 
 	cout << "Year\tPayment\tRemaining" << endl;
 	for (int i = 1; i <= numberOfYears; i++) {
+		payment = basePayment + interest * amount / 100;
 		amount -= basePayment;
-		// Arguably the interest should be calculated *before* the payment, but that's not what the task text did
-		payment = basePayment + interest / 100 * amount;
 		cout << i << "\t" << payment << "\t" << amount << endl;
 	}
 }
