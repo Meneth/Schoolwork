@@ -62,7 +62,7 @@ $RECYCLE.BIN/
 **/Debug/
 **/ipch/
 **/.vs/
-*.sln
+# *.sln
 *.sdf
 *.vcxproj*
 *.opendb
