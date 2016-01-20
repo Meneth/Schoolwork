@@ -35,8 +35,15 @@ double flightTime(double initVelocity) {
 
 // Task 4
 
-void getUserInput(double *theta, double *absVelocity) {	cout << "Please enter the angle theta: ";	cin >> *theta;	cout << "Please enter the absolute velocity: ";	cin >> *absVelocity;}double getVelocityX(double theta, double absVelocity) {
-	// Who asks someone to implement this without specifying the units for theta? Radians or degrees? I've assumed radians
+void getUserInput(double *theta, double *absVelocity) {
+	cout << "Please enter the angle theta: ";
+	cin >> *theta;
+	cout << "Please enter the absolute velocity: ";
+	cin >> *absVelocity;
+}
+
+// Who asks someone to implement this without specifying the units for theta? Radians or degrees? I've assumed radians
+double getVelocityX(double theta, double absVelocity) {
 	return cos(theta) * absVelocity;
 }
 
