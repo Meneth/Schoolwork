@@ -122,7 +122,7 @@ void compareListOfNumbers(double *l, int size) {
 	cout << r[2] << " numbers were greater than 0" << endl; // For consistency this really should be "above", or the first print should be "less than"
 }
 
-int main2() {
+int main() {
 	fibonacci(20);
 	triangleNumbersBelow(20);
 	cout << isTriangleNumber(10) << endl;
