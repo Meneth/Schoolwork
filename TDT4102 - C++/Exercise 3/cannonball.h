@@ -1,3 +1,5 @@
+#pragma once
+
 // Task 1
 double acclY();
 double velY(double initVelocity, double time);

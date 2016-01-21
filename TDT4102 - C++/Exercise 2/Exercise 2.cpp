@@ -102,18 +102,21 @@ void pickFunction() {
 	int i;
 	cin >> i;
 	switch (i) {
-	default:
-	case 0:
-		break;
 	case 1:
 		inputIntegersAndPrintSum();
 		break;
 	case 2:
 		inputIntegersUsingLoopAndPrintSum();
+		break;
 	case 3:
 		convertNOKtoEUR();
+		break;
 	case 4:
 		solveQuadraticEquation();
+		break;
+	default:
+	case 0:
+		break;
 	}
 }
 
@@ -223,8 +226,8 @@ int main() {
 
 	solveQuadraticEquation();
 
-	pickFunction();
 	*/
+	pickFunction();
 
 	calculateLoanPayments();
 }
