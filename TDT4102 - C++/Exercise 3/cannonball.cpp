@@ -35,7 +35,14 @@ double flightTime(double initVelocity) {
 
 // Task 4
 
-void getUserInput(double *theta, double *absVelocity) {	cout << "Please enter the angle theta: ";	cin >> *theta;	cout << "Please enter the absolute velocity: ";	cin >> *absVelocity;}double getVelocityX(double theta, double absVelocity) {
+void getUserInput(double *theta, double *absVelocity) {
+	cout << "Please enter the angle theta [0 - pi/2]: ";
+	cin >> *theta;
+	cout << "Please enter the absolute velocity: ";
+	cin >> *absVelocity;
+}
+
+double getVelocityX(double theta, double absVelocity) {
 	// Who asks someone to implement this without specifying the units for theta? Radians or degrees? I've assumed radians
 	return cos(theta) * absVelocity;
 }
@@ -62,4 +69,28 @@ double targetPractice(double distanceToTarget,
 	double velocityX,
 	double velocityY) {
 	return getDistanceTraveled(velocityX, velocityY) - distanceToTarget;
+}
+
+// Task 6
+void playTargetPractice() {
+	const int attempts = 10;
+	int goalDistance = modernRandomWithLimits(100, 1000);
+	double theta, absVelocity;
+	double difference;
+	for (int i = 0; i < attempts; i++) {
+		cout << attempts - i << " attempts left." << endl;
+		getUserInput(&theta, &absVelocity);
+		difference = targetPractice(goalDistance, getVelocityX(theta, absVelocity), getVelocityY(theta, absVelocity));
+		if (difference < 5 && difference > -5) {
+			cout << "Congratulations, you hit the target!" << endl;
+			return;
+		}
+		else if (difference < 0) {
+			cout << "You undershot the target by " << difference * -1 << " meters!" << endl;
+		}
+		else {
+			cout << "You overshot the target by " << difference << " meters!" << endl;
+		}
+	}
+	cout << "You ran out of attempts!" << endl;
 }

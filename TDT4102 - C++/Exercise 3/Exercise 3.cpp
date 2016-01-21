@@ -44,5 +44,16 @@ int main()
 	getVelocityVector(0.0, 10.0, &velocityX, &velocityY);
 	cout << velocityX << " - " << velocityY << endl;
 
+	srand((int) time(NULL));
+	cout << randomWithLimits(0, 100) << endl;
+	cout << randomWithLimits(0, 100) << endl;
+	cout << randomWithLimits(0, 100) << endl;
+
+	cout << modernRandomWithLimits(0, 100) << endl;
+	cout << modernRandomWithLimits(0, 100) << endl;
+	cout << modernRandomWithLimits(0, 100) << endl;
+
+	playTargetPractice();
+
     return 0;
 }
