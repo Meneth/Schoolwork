@@ -17,6 +17,8 @@
 #include <iostream>
 #include <ctime>
 #include <random>
+#include <algorithm>
 
 #include "tests.h"
 #include "utilities.h"
+#include "mastermind.h"

@@ -94,13 +94,13 @@ char getChar(char min, char max) {
 
 void readInputToCString(char *array, int length, char min, char max) {
 	for (int i = 0; i < length ; i++) {
-		cout << "Position " << i << endl;
+		cout << "Position " << i + 1 << " of " << length << endl;
 		array[i] = getChar(min, max);
 	}
 	array[length] = '\0';
 }
 
-int countOccurencesOfCharacter(char *array, int length, char c) {
+int countOccurencesOfCharacter(char *array, char c) {
 	int count = 0;
 	for (int i = 0; ; i++) {
 		if (array[i] == '\0') {

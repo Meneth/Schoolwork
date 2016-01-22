@@ -6,7 +6,8 @@
 using namespace std;
 
 int main() {
-	testPart1();
-	testPart2();
-	testPart3();
+	//testPart1();
+	//testPart2();
+	//testPart3();
+	playMastermind();
 }

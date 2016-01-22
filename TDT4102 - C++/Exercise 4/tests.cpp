@@ -40,7 +40,7 @@ void testPart3() {
 
 	int table[6];
 	for (char c = 'A'; c <= 'F'; c++) {
-		table[c - 'A'] = countOccurencesOfCharacter(grades, 8, c);
+		table[c - 'A'] = countOccurencesOfCharacter(grades, c);
 	}
 	int count = 0;
 	int sum = 0;
@@ -59,7 +59,7 @@ void testPart3() {
 	//cout << table << endl;
 
 	for (char c = 'A'; c <= 'F'; c++) {
-		table[c - 'A'] = countOccurencesOfCharacter(grades2, 20, c);
+		table[c - 'A'] = countOccurencesOfCharacter(grades2, c);
 	}
 	count = 0;
 	sum = 0;
