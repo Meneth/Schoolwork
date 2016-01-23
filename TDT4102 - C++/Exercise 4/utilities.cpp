@@ -45,7 +45,11 @@ void sortArray(int *array, int length) {
 	if (length <= 1) {
 		return; // Sorted by definition
 	}
+
+	// Pick the median of the start, middle, and end as pivot
+	swapNumbers(array, medianOfThree(array, length));
 	int pivot = array[0];
+
 	int partition = length;
 	for (int i = 1; i < partition; i++) {
 		if (array[i] > pivot) {
@@ -60,6 +64,23 @@ void sortArray(int *array, int length) {
 
 	sortArray(array, partition - 1);
 	sortArray(array + partition, length - partition);
+}
+
+int* medianOfThree(int *array, int length) {
+	int middle = (array[0] + length) / 2;
+	if (array[0] > array[middle]) {
+		if (array[0] <= array[length - 1])
+			return array;
+		else if (array[middle] > array[length - 1])
+			return array + middle;
+	}
+	else {
+		if (array[0] > array[length - 1])
+			return array;
+		else if (array[middle] <= array[length - 1])
+			return array + middle;
+	}
+	return array + length - 1;
 }
 
 double medianOfArray(int *array, int length) {

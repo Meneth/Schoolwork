@@ -11,3 +11,4 @@ double medianOfArray(int *array, int length);
 void randomizeCString(char *array, int length, char min, char max);
 void readInputToCString(char *array, int length, char min, char max);
 int countOccurencesOfCharacter(char *array, char c);
+int* medianOfThree(int *array, int length);
