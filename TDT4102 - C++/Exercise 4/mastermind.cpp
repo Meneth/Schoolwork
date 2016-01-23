@@ -29,21 +29,7 @@ void playMastermind() {
 		}
 		guesses[i][SIZE] = '\0';
 
-		cout << endl << endl;
-		
-		cout << "Guess\tStatus" << endl;
-		for (int j = 0; j <= i; j++) {
-			cout << guesses[j];
-			cout << "\t";
-			for (int k = 0; k < checkCharactersAndPosition(guesses[j], code, SIZE); k++) {
-				cout << "x";
-			}
-			for (int k = 0; k < checkCharacters(guesses[j], code, MIN, MAX) - checkCharactersAndPosition(guesses[j], code, SIZE); k++) {
-				cout << "o";
-			}
-			cout << endl;
-		}
-		cout << endl;
+		printHistory(*guesses, i, code, SIZE + 1, MIN, MAX);
 
 		i++;
 
@@ -55,6 +41,27 @@ void playMastermind() {
 	if (tolower(answer) == 'y') {
 		playMastermind();
 	}
+}
+
+void printHistory(char *guesses, int attemptsMade, char *code, int size, char min, char max) {
+	cout << endl << endl;
+
+	cout << "Guess\tStatus" << endl;
+	char *guess;
+	for (int j = 0; j <= attemptsMade; j++) {
+		guess = &guesses[j * size];
+		cout << guess;
+		cout << "\t";
+		
+		for (int k = 0; k < checkCharactersAndPosition(guess, code, size); k++) {
+			cout << "x";
+		}
+		for (int k = 0; k < checkCharacters(guess, code, min, max) - checkCharactersAndPosition(guess, code, size); k++) {
+			cout << "o";
+		}
+		cout << endl;
+	}
+	cout << endl;
 }
 
 int checkCharactersAndPosition(char *guess, char *code, int length) {
