@@ -46,20 +46,20 @@ void sortArray(int *array, int length) {
 		return; // Sorted by definition
 	}
 	int pivot = array[0];
-	int divider = length;
-	for (int i = 1; i < divider; i++) {
+	int partition = length;
+	for (int i = 1; i < partition; i++) {
 		if (array[i] > pivot) {
-			divider--;
-			swapNumbers(array + i, array + divider);
+			partition--;
+			swapNumbers(array + i, array + partition);
 			i--;
 		}
 	}
 
 	// Ensure the pivot itself is left out of the recursive solving
-	swapNumbers(array, array + divider - 1);
+	swapNumbers(array, array + partition - 1);
 
-	sortArray(array, divider - 1);
-	sortArray(array + divider, length - divider);
+	sortArray(array, partition - 1);
+	sortArray(array + partition, length - partition);
 }
 
 double medianOfArray(int *array, int length) {
