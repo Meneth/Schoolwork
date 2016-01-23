@@ -7,24 +7,47 @@ using namespace std;
 void playMastermind() {
 	const int SIZE = 4;
 	const int LETTERS = 6;
-	const char min = 'A';
-	const char max = 'A' + LETTERS - 1;
-	const int tries = 10;
+	const char MIN = 'A';
+	const char MAX = 'A' + LETTERS - 1;
+	const int TRIES = 10;
 	char code[SIZE + 1];
 	char guess[SIZE + 1];
 
-	randomizeCString(code, SIZE, min, max);
+	char guesses[TRIES][SIZE + 1];
+
+	randomizeCString(code, SIZE, MIN, MAX);
+
+	cout << "x means a correct character in the correct position. o means a correct character in the wrong position." << endl;
+
 	int i = 0;
 	do {
-		cout << tries - i << " tries left." << endl;
-		readInputToCString(guess, SIZE, min, max);
+		cout << TRIES - i << " tries left." << endl;
+		readInputToCString(guess, SIZE, MIN, MAX);
 
-		cout << "Your guess: " << guess << endl;
-		cout << checkCharactersAndPosition(guess, code, SIZE) << " correct letter(s) in the correct position." << endl;
-		cout << checkCharacters(guess, code, min, max) << " correct letter(s)." << endl;
+		for (int j = 0; j < SIZE; j++) {
+			guesses[i][j] = guess[j];
+		}
+		guesses[i][SIZE] = '\0';
+
+		cout << endl << endl;
+		
+		cout << "Guess\tStatus" << endl;
+		for (int j = 0; j <= i; j++) {
+			cout << guesses[j];
+			cout << "\t";
+			for (int k = 0; k < checkCharactersAndPosition(guesses[j], code, SIZE); k++) {
+				cout << "x";
+			}
+			for (int k = 0; k < checkCharacters(guesses[j], code, MIN, MAX) - checkCharactersAndPosition(guesses[j], code, SIZE); k++) {
+				cout << "o";
+			}
+			cout << endl;
+		}
+		cout << endl;
+
 		i++;
 
-	} while (checkCharactersAndPosition(guess, code, SIZE) < SIZE && i < tries);
+	} while (checkCharactersAndPosition(guess, code, SIZE) < SIZE && i < TRIES);
 	cout << "Contratulations, you won!" << endl;
 	cout << "Do you want to play another round? [y/n] ";
 	char answer;
