@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
 	//testPart1();
-	//testPart2();
+	testPart2();
 	//testPart3();
-	playMastermind();
+	//playMastermind();
 }

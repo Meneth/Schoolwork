@@ -45,22 +45,21 @@ void sortArray(int *array, int length) {
 	if (length <= 1) {
 		return; // Sorted by definition
 	}
-	int n = 0;
-	int pivot = array[length - 1];
-	int center = length - 1;
-	for (int i = 0; i < center; i++) {
+	int pivot = array[0];
+	int divider = length;
+	for (int i = 1; i < divider; i++) {
 		if (array[i] > pivot) {
-			center--;
-			swapNumbers(array + i, array + center);
+			divider--;
+			swapNumbers(array + i, array + divider);
 			i--;
 		}
 	}
 
 	// Ensure the pivot itself is left out of the recursive solving
-	swapNumbers(array + center, array + length - 1);
+	swapNumbers(array, array + divider - 1);
 
-	sortArray(array, center);
-	sortArray(array + center + 1, length - center - 1);
+	sortArray(array, divider - 1);
+	sortArray(array + divider, length - divider);
 }
 
 double medianOfArray(int *array, int length) {
