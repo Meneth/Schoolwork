@@ -55,7 +55,7 @@ void sortArray(int *array, int length) {
 		}
 	}
 
-	// Ensure the pivot itself is left out of the recursive solving
+	// Ensure the pivot itself is left out of the recursive sorting, and is in the right position
 	swapNumbers(array, array + partition - 1);
 
 	sortArray(array, partition - 1);
