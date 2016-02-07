@@ -294,3 +294,14 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+
+# Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
