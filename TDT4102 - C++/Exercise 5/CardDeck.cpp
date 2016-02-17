@@ -1,9 +1,10 @@
 #include "stdafx.h"
 
 CardDeck::CardDeck() {
+	currentCardIndex = 0;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 13; j++) {
-			cards[i*13 + j] = Card((Card::Suit) i, (Card::Rank) j);
+			cards[i*13 + j] = Card((Card::Suit) i, (Card::Rank) (j + 2));
 		}
 	}
 }

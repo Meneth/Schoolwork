@@ -79,5 +79,8 @@ int main()
 	deck.shuffle();
 	deck.print();
 
+	Blackjack game;
+	game.playGame();
+
     return 0;
 }

@@ -47,23 +47,23 @@ Card::Card(Suit suit, Rank rank) {
 	invalid = false;
 }
 
-string Card::toString() {
+string Card::toString() const {
 	if (invalid)
 		return "Invalid card";
 	return rankToString(r) + " of " + suitToString(s);
 }
 
-string Card::toStringShort() {
+string Card::toStringShort() const {
 	if (invalid)
 		return "Invalid card";
 	char buffer[100];
-	sprintf_s(buffer, 100, "%c%d", suitToString(s).at(0), r + 2);
+	sprintf_s(buffer, 100, "%c%d", suitToString(s).at(0), r);
 	return buffer;
 }
 
-Card::Suit Card::getSuit() {
+Card::Suit Card::getSuit() const {
 	return s;
 }
-Card::Rank Card::getRank() {
+Card::Rank Card::getRank() const {
 	return r;
 }
