@@ -39,11 +39,13 @@ public class Barber extends Thread {
 		while (!stopped) {
 			try {
 				gui.println("Barber #" + pos + " is waiting for a customer.");
+				gui.barberIsAwake(pos);
 				Customer customer = queue.popCustomer();
 				gui.println("Barber #" + pos + " is now serving a customer.");
 				gui.fillBarberChair(pos, customer);
 				sleep(Globals.barberWork + (int) Math.random() * Globals.barberWork / 2);
 				gui.emptyBarberChair(pos);
+				gui.barberIsSleeping(pos);
 				sleep(Globals.barberSleep + (int) Math.random() * Globals.barberSleep / 2);
 			} catch (InterruptedException e) {
 				throw new IllegalStateException(e);
