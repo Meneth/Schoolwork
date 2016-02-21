@@ -37,13 +37,45 @@ int main() {
 
 	Matrix matrix;
 	cout << matrix;
-	matrix = Matrix(5);
-	cout << matrix;
-	matrix = Matrix(3, 2);
-	cout << matrix;
-	matrix.set(1, 1, 5);
-	cout << matrix;
-	cout << matrix.get(1, 0) << endl;
+	Matrix matrix2(5);
+	cout << matrix2 << endl;
+	Matrix matrix3(3, 2);
+	cout << matrix3 << endl;
+	matrix3.set(1, 1, 5);
+	cout << matrix3 << endl;
+	cout << matrix3.get(1, 0) << endl;
+
+	matrix = matrix2;
+	cout << matrix << endl;
+
+	Matrix matrix4(matrix);
+	cout << matrix4 << endl;
+
+	Matrix matrix5 = matrix2;
+	cout << matrix5 << endl;
+
+	matrix5 += matrix2;
+	cout << matrix5 << endl;
+
+	matrix5 -= matrix2;
+	cout << matrix5 << endl;
+
+	Matrix matrix6(2, 3);
+	Matrix matrix7(3, 2);
+	matrix6.set(0, 0, 1);
+	matrix6.set(0, 1, 2);
+	matrix6.set(0, 2, 3);
+	matrix6.set(1, 0, 4);
+	matrix6.set(1, 1, 5);
+	matrix6.set(1, 2, 6);
+	matrix7.set(0, 0, 7);
+	matrix7.set(0, 1, 8);
+	matrix7.set(1, 0, 9);
+	matrix7.set(1, 1, 10);
+	matrix7.set(2, 0, 11);
+	matrix7.set(2, 1, 12);
+
+	cout << (matrix6 *= matrix7) << endl;
+
     return 0;
 }
-
