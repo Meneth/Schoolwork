@@ -13,7 +13,7 @@ import sheep.math.BoundingBox;
 public class GameLayer extends Layer {
     private Paddle paddle;
     private Paddle paddle2;
-    private Ball ball;
+    private static Ball ball;
     private CollisionLayer collisionLayer;
 
     private Token[] tokens;
@@ -24,9 +24,7 @@ public class GameLayer extends Layer {
         paddle = new Paddle(150, Pong.maxY);
         paddle2 = new Paddle(Pong.maxX - 150, Pong.maxY);
 
-        ball = new Ball((float) Pong.maxX / 2);
-
-        tokens = new Token[] {paddle, paddle2, ball};
+        tokens = new Token[] {paddle, paddle2, getBall()};
 
         for (Token token : tokens ) {
             collisionLayer.addSprite(token);
@@ -39,7 +37,7 @@ public class GameLayer extends Layer {
         paddle.update(dt);
         paddle2.moveTowardsPrediction(ball);
         paddle2.update(dt);
-        ball.update(dt);
+        getBall().update(dt);
         collisionLayer.update(dt);
     }
 
@@ -47,7 +45,7 @@ public class GameLayer extends Layer {
     public void draw(Canvas canvas, BoundingBox boundingBox) {
         paddle.draw(canvas);
         paddle2.draw(canvas);
-        ball.draw(canvas);
+        getBall().draw(canvas);
     }
 
     public Paddle getPaddle() {
@@ -55,6 +53,13 @@ public class GameLayer extends Layer {
     }
     public Paddle getPaddle2() {
         return paddle2;
+    }
+
+    // Singleton pattern for this. Doesn't make much sense, but there was no sensible place to use it
+    public static Ball getBall() {
+        if (ball == null)
+            ball = new Ball((float) Pong.maxX / 2);
+        return ball;
     }
 
     public Token[] getTokens() {

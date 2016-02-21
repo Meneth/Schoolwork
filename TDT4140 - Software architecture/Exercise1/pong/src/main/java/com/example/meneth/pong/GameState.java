@@ -22,6 +22,7 @@ public class GameState extends State {
             token.setState(this);
         }
         gameWorld.addLayer(gameLayer);
+        // Observer pattern used here
         this.addTouchListener(new TouchListener() {
             @Override
             public boolean onTouchDown(MotionEvent motionEvent) {

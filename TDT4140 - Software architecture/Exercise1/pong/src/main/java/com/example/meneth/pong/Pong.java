@@ -12,6 +12,8 @@ import sheep.game.Game;
 public class Pong extends Activity {
     public static int maxX, maxY;
 
+    private Game game;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
