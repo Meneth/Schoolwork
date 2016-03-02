@@ -295,6 +295,9 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
+# SFML
+SFML-2.3.2/
+
 
 # Android Studio
 *.iml
