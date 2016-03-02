@@ -21,6 +21,7 @@ const sf::Color number_colors[9] = {
     sf::Color(128, 128, 128)
 };
 const sf::Color mine_color = sf::Color::Red;
+const sf::Color marked_color = sf::Color::Yellow;
 
 const int tile_size = 32;
 const int border_size = 2;
@@ -75,7 +76,13 @@ int main() {
                     if (game->isGameOver()) {
                         cout << "GAME OVER! Hit ESC or Q to exit, or space to restart" << endl;
                     }
-                }
+				}
+				else if (event.mouseButton.button == sf::Mouse::Right && !game->isGameOver()) {
+					int row = event.mouseButton.y / tile_size;
+					int col = event.mouseButton.x / tile_size;
+
+					game->markTile(row, col);
+				}
                 break;
             }
         }
@@ -94,15 +101,20 @@ int main() {
 
                 window.draw(tile);
 
-                if (game->isTileOpen(row, col) || (game->isGameOver() && game->isTileMine(row, col))) {
+                if (game->isTileOpen(row, col) || (game->isGameOver() && game->isTileMine(row, col))
+					|| game->isTileMarked(row, col)) {
                     sf::Text text;
                     text.setStyle(sf::Text::Bold);
                     text.setCharacterSize(tile_size / 2.0);
 
-                    if (game->isTileMine(row, col)) {
+					if (game->isTileMarked(row, col) && !game->isGameOver()) {
+						text.setString("X");
+						text.setColor(marked_color);
+					}
+                    else if (game->isTileMine(row, col)) {
                         text.setString("X");
                         text.setColor(mine_color);
-                    }
+					}
                     else {
                         int num_adjacent_mines = game->numAdjacentMines(row, col);
                         if(num_adjacent_mines == 0) continue; // Don't draw 0s
@@ -118,7 +130,7 @@ int main() {
                     text.setPosition(tile_x + tile_size / 2.0, tile_y + tile_size / 2.0);
 
                     window.draw(text);
-                }
+				}
             }
         }
 

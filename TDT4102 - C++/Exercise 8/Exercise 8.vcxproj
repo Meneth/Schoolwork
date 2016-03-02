@@ -150,7 +150,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CourgeCatalog.cpp" />
     <ClCompile Include="CourseCatalog.cpp" />
     <ClCompile Include="Exercise 8.cpp" />
     <ClCompile Include="stdafx.cpp">

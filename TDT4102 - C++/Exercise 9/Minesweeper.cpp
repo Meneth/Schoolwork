@@ -3,15 +3,50 @@
 #include <cstdlib>
 #include <stdexcept>
 
+int posToIndex(Pos pos, int rowLength) {
+	return pos.y * rowLength + pos.x;
+}
+
+void addTile(std::vector<int> &tiles, Pos tile, Pos parent, Pos bounds) {
+	if (tile.x == parent.x && tile.y == parent.y) // Not adjacent to itself
+		return;
+	else if (tile.x < 0 || tile.x >= bounds.x) // x out of bounds
+		return;
+	else if (tile.y < 0 || tile.y >= bounds.y) // y out of bounds
+		return;
+	for (int i = 0; i < tiles.size(); i++) {
+		if (tiles[i] == -1) {
+			tiles[i] = posToIndex(tile, bounds.x);
+			return;
+		}
+	}
+}
+
+std::vector<int> Minesweeper::getAdjacentTiles(Pos tile, Pos bounds) const {
+	std::vector<int> tiles(8, -1);
+	// Add all adjacent tiles
+	for (int i = -1; i <= 1; i++) {
+		for (int j = -1; j <= 1; j++) {
+			addTile(tiles, Pos{ tile.x + i, tile.y + j }, tile, bounds);
+		}
+	}
+	return tiles;
+}
+
 Minesweeper::Minesweeper(int width, int height, int mines) {
 	if (mines > width * height)
 		throw std::invalid_argument("Can't have more mines than tiles!");
-	this->height = height;
-	this->width = width;
+	if (width < 2 || height < 2)
+		throw std::invalid_argument("Map must be at least 2 by 2 tiles!");
+
+	bounds.x = width;
+	bounds.y = height;
 	tiles = std::vector<Tile>(width * height);
 	for (int i = 0; i < height * width; i++) {
-		tiles[i] = { false, false }; // Set all tiles as closed and having no mine
+		tiles[i] = { false, false, false }; // Set all tiles as closed and having no mine
 	}
+
+	// Generate mines
 	for (int i = 0; i < mines; i++) {
 		int pos = rand() % (height * width);
 		if (tiles[pos].mine)
@@ -19,28 +54,59 @@ Minesweeper::Minesweeper(int width, int height, int mines) {
 		else
 			tiles[pos].mine = true;
 	}
-}
 
-Minesweeper::~Minesweeper() {
-	std::vector<Tile>().swap(tiles);
+	gameOver = false;
+	safeTiles = width * height - mines;
 }
 
 bool Minesweeper::isGameOver() const {
-    return false;
+    return gameOver || safeTiles == 0;
 }
 
 bool Minesweeper::isTileOpen(int row, int col) const {
-    return tiles[row * width + col].open;
+    return tiles[row * bounds.x + col].open;
 }
 
 bool Minesweeper::isTileMine(int row, int col) const {
-    return tiles[row * width + col].mine;
+    return tiles[row * bounds.x + col].mine;
+}
+
+bool Minesweeper::isTileMarked(int row, int col) const {
+	return tiles[row * bounds.x + col].marked;
 }
 
 void Minesweeper::openTile(int row, int col) {
-	tiles[row * width + col].open = true;
+	if (tiles[row * bounds.x + col].mine)
+		gameOver = true;
+
+	bool wasOpen = tiles[row * bounds.x + col].open;
+	tiles[row * bounds.x + col].open = true;
+	if (!wasOpen) {
+		Pos pos{ col, row };
+		std::vector<int> adjacent = getAdjacentTiles(pos, bounds);
+		if (numAdjacentMines(row, col) == 0) {
+			for (int i = 0; i < adjacent.size(); i++) {
+				int tile = adjacent[i];
+				if (tile != -1 && !tiles[tile].open)
+					openTile(tile / bounds.x, tile % bounds.x);
+			}
+		}
+		safeTiles--;
+	}
+}
+
+void Minesweeper::markTile(int row, int col) {
+	tiles[row * bounds.x + col].marked = !tiles[row * bounds.x + col].marked;
 }
 
 int Minesweeper::numAdjacentMines(int row, int col) const {
-    return 0;
+	Pos pos{ col, row };
+	std::vector<int> adjacent = getAdjacentTiles(pos, bounds);
+	int adjCount = 0;
+	for (int i = 0; i < adjacent.size(); i++) {
+		int tile = adjacent[i];
+		if (tile != -1 && tiles[tile].mine)
+			adjCount++;
+	}
+    return adjCount;
 }

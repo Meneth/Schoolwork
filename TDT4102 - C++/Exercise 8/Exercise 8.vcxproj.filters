@@ -35,9 +35,6 @@
     <ClCompile Include="Exercise 8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CourgeCatalog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CourseCatalog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
