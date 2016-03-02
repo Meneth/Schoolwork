@@ -1,8 +1,15 @@
 #pragma once
 
+#include <vector>
+
+struct Tile {
+	bool open;
+	bool mine;
+};
+
 class Minesweeper {
-private:
-    // Legg til de medlemsvariablene og hjelpefunksjonene du trenger
+	std::vector<Tile> tiles;
+	int height, width;
 
 public:
     Minesweeper(int width, int height, int mines);
@@ -17,7 +24,6 @@ public:
 
     int numAdjacentMines(int row, int col) const;
 
-    // Vi slår av autogenerert kopikonstruktør og tilordningsoperator for å unngå feil
     Minesweeper(const Minesweeper &) = delete;
     Minesweeper &operator=(const Minesweeper &) = delete;
 };
