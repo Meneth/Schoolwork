@@ -37,7 +37,7 @@ int main() {
 
 
     //cout << "Enter height, width, and number of mines: ";
-    int height = 20, width = 30, mines = 40;
+    int height = 20, width = 30, mines = 60;
     //cin >> height >> width >> mines;
 
     Minesweeper* game = new Minesweeper(width, height, mines);
