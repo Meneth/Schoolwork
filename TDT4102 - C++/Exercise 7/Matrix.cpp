@@ -44,7 +44,7 @@ Matrix &Matrix::operator=(Matrix rhs) {
 	return *this;
 }
 
-Matrix::Matrix(Matrix &other) {
+Matrix::Matrix(const Matrix &other) {
 	if (other.isValid()) {
 		initialize(other.height, other.width);
 		for (int i = 0; i < other.height; i++) {
@@ -84,7 +84,7 @@ Matrix &Matrix::operator+=(const Matrix &other) {
 		}
 	} else {
 		// Invalidate matrix
-		delete this;
+		matrix = nullptr;
 	}
 	return *this;
 }

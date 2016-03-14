@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 bool Blackjack::isAce(const Card &card) {
-	return card.getSuit() == card.ACE;
+	return card.getRank() == card.ACE;
 }
 
 int Blackjack::getCardValue(const Card &card) {

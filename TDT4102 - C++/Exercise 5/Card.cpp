@@ -57,7 +57,7 @@ string Card::toStringShort() const {
 	if (invalid)
 		return "Invalid card";
 	char buffer[100];
-	sprintf_s(buffer, 100, "%c%d", suitToString(s).at(0), r);
+	sprintf(buffer, "%c%d", suitToString(s).at(0), r);
 	return buffer;
 }
 

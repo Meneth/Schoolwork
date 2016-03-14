@@ -13,7 +13,7 @@ public:
 	explicit Matrix(unsigned int nRows);
 	~Matrix();
 	Matrix &operator =(Matrix rhs);
-	Matrix(Matrix &other);
+	Matrix(const Matrix &other);
 
 	double get(unsigned int row, unsigned int col) const;	void set(unsigned int row, unsigned int col, double value);
 	int getHeight() const;

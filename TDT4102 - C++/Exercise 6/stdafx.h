@@ -18,3 +18,5 @@
 
 #include "Matrix2x2.h"
 #include "Vector2.h"
+#include <stdexcept>
+#include <cmath>
