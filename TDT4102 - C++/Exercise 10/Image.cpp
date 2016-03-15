@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "Image.h"
 
 /*****************************************************
@@ -28,23 +30,42 @@ unsigned int Image::getHeight() const  {
    return height;
 }
 
+unsigned int posToIndex(unsigned int x, unsigned int y, unsigned int width) {
+	return 3 * (x + y * width);
+}
+
 const unsigned char * Image::getScanLine(unsigned int line) const  {
-   /* Enter your code here */
-   return nullptr;
+   return data + line * 3 * width;
 }
 unsigned char * Image::getScanLine(unsigned int line) {
-   /* Enter your code here */
-   return nullptr;
+	return data + line * 3 * width;
 }
 
 Color Image::getColor( unsigned int x, unsigned int y ) const {
-   /* Enter your code here */
-   return Color();
+	unsigned int pos = posToIndex(x, y, width);
+	return Color(data[pos], data[pos + 1], data[pos + 2]);
 }
 void Image::setColor( unsigned int x, unsigned int y, const Color &color ) {
-   /* Enter your code here */
+	if (x >= width || y >= height)
+		throw std::invalid_argument("Position out of bounds!");
+	unsigned int pos = posToIndex(x, y, width);
+	data[pos] = color.red;
+	data[pos + 1] = color.green;
+	data[pos + 2] = color.blue;
 }
 
 void Image::fill( const Color &color ) {
-   /* Enter your code here */
+	for (int i = 0; i < 3 * width * height; i++) {
+		switch (i % 3) {
+		case 0:
+			data[i] = color.red;
+			break;
+		case 1:
+			data[i] = color.green;
+			break;
+		case 2:
+			data[i] = color.blue;
+			break;
+		}
+	}
 }
