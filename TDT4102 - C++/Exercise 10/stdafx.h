@@ -17,6 +17,8 @@
 #include "Matrix.h"
 #include "Vector.h"
 #include "Image.h"
+#include "Shape.h"
+#include "Line.h"
 
 #include <iostream>
 #include <stdexcept>

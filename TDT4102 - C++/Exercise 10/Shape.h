@@ -9,5 +9,5 @@ public:
 	Shape(Color color);
 	Color getColor() const;
 
-	virtual void draw(Image image) = 0;
+	virtual void draw(Image &image) = 0;
 };

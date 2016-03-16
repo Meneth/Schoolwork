@@ -19,8 +19,10 @@ Image::Image( unsigned int width, unsigned int height ) {
 }
 
 Image::~Image()  {
-	delete[] data;
-	data = nullptr;
+	if (data != nullptr) {
+		delete[] data;
+		data = nullptr;
+	}
 }
 
 unsigned int Image::getWidth() const {
