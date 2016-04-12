@@ -23,6 +23,7 @@ public class Process implements Constants {
 	private long memoryNeeded;
 	/** The amount of cpu time still needed by this process */
 	private long cpuTimeNeeded;
+
 	/** The average time between the need for I/O operations for this process */
 	private long avgIoInterval;
 	/** The time left until the next time this process needs I/O */
@@ -77,6 +78,8 @@ public class Process implements Constants {
 		int green = 64 + (int) ((processId * 47) % 128);
 		int blue = 64 + (int) ((processId * 53) % 128);
 		color = new Color(red, green, blue);
+		
+		timeToNextIoOperation = 1 + (long) (2 * Math.random() * avgIoInterval);
 	}
 
 	/**
@@ -113,6 +116,7 @@ public class Process implements Constants {
 	public void leftMemoryQueue(long clock) {
 		timeSpentWaitingForMemory += clock - timeOfLastEvent;
 		timeOfLastEvent = clock;
+		nofTimesInReadyQueue++;
 	}
 
 	/**
@@ -133,9 +137,59 @@ public class Process implements Constants {
 	 *            The Statistics object to be updated.
 	 */
 	public void updateStatistics(Statistics statistics) {
+		// TODO - Misisng stuff
 		statistics.totalTimeSpentWaitingForMemory += timeSpentWaitingForMemory;
 		statistics.nofCompletedProcesses++;
+		statistics.totalIOTimeUsed += timeSpentInIo;
+		statistics.totalCpuTimeUsed += timeSpentInCpu;
+		statistics.nofTimesInIoQueue += nofTimesInIoQueue;
+		statistics.nofTimesInReadyQueue += nofTimesInReadyQueue;
+		statistics.totalTimeSpentWaitingForCPU += timeSpentInReadyQueue;
+		statistics.totalTimeSpentWaitingForIo += timeSpentWaitingForIo;
 	}
 
+	public long getTimeToNextIoOperation() {
+		return timeToNextIoOperation;
+	}
+
+	public long getCPUTimeLeft() {
+		return cpuTimeNeeded - timeSpentInCpu;
+	}
+
+	public void run(long clock) {
+		timeSpentInReadyQueue += clock - timeOfLastEvent;
+		timeOfLastEvent = clock;
+		nofTimesInReadyQueue++;
+	}
+	
+	public void suspend(long clock) {
+		timeSpentInCpu += clock - timeOfLastEvent;
+		timeToNextIoOperation -= (clock - timeOfLastEvent);
+		timeOfLastEvent = clock;
+	}
+	
+	public void end(long clock) {
+		timeSpentInCpu += clock - timeOfLastEvent;
+		timeOfLastEvent = clock;
+	}
+	
+	public void enterIOQueue(long clock) {
+		timeSpentInCpu += clock - timeOfLastEvent;
+		timeOfLastEvent = clock;
+	}
+	
+	public void endIO(long clock) {
+		timeSpentInIo += clock - timeOfLastEvent;
+		timeOfLastEvent = clock;
+		
+		timeToNextIoOperation = 1 + (long) (2 * Math.random() * avgIoInterval);
+	}
+	
+	public void startIO(long clock) {
+		timeSpentWaitingForIo += clock - timeOfLastEvent;
+		timeOfLastEvent = clock;
+		nofTimesInIoQueue++;
+	}
+	
 	// Add more methods as needed
 }

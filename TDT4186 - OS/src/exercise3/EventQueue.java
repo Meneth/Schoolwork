@@ -7,15 +7,15 @@ import java.util.*;
  * the system. Events are kept in a cronologically sorted list. This class is an
  * example of a priority queue (event time being the priority in this case).
  */
-public class EventQueue {
+public class EventQueue implements Iterable<Event> {
 	/** The list of events */
-	private ArrayList events;
+	private ArrayList<Event> events;
 
 	/**
 	 * Creates a new Event Queue.
 	 */
 	public EventQueue() {
-		events = new ArrayList();
+		events = new ArrayList<>();
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class EventQueue {
 	 * @return The event with the lowest time value in the queue.
 	 */
 	public Event getNextEvent() {
-		return (Event) events.remove(0);
+		return events.remove(0);
 	}
 
 	/**
@@ -49,5 +49,14 @@ public class EventQueue {
 	 */
 	public boolean isEmpty() {
 		return events.size() == 0;
+	}
+	
+	public String toString() {
+		return events.toString();
+	}
+
+	@Override
+	public Iterator<Event> iterator() {
+		return events.iterator();
 	}
 }

@@ -11,7 +11,7 @@ import java.awt.*;
  */
 public class Queue extends JPanel implements Constants {
 	/** The content of the queue */
-	private ArrayList content;
+	private ArrayList<Process> content;
 	/** The name of the queue */
 	private String name;
 	/**
@@ -40,7 +40,7 @@ public class Queue extends JPanel implements Constants {
 		this.name = name;
 		this.maxVisibleLength = maxVisibleLength;
 		this.direction = direction;
-		content = new ArrayList();
+		content = new ArrayList<>();
 		setBackground(Color.white);
 	}
 
@@ -50,7 +50,7 @@ public class Queue extends JPanel implements Constants {
 	 * @param o
 	 *            The object to be added to the queue.
 	 */
-	public void insert(Object o) {
+	public void insert(Process o) {
 		content.add(o);
 		repaint();
 	}
@@ -61,7 +61,7 @@ public class Queue extends JPanel implements Constants {
 	 * 
 	 * @return The first object in the queue.
 	 */
-	public Object getNext() {
+	public Process getNext() {
 		return content.get(0);
 	}
 
@@ -70,8 +70,10 @@ public class Queue extends JPanel implements Constants {
 	 * 
 	 * @return The object that was the first one in the queue.
 	 */
-	public Object removeNext() {
-		Object result = content.remove(0);
+	public Process removeNext() {
+		Process result = null;
+		if (!isEmpty())
+			result = content.remove(0);
 		repaint();
 		return result;
 	}
@@ -114,7 +116,7 @@ public class Queue extends JPanel implements Constants {
 			g.drawString(heading, w / 2 - fm.stringWidth(heading) / 2, 15);
 			for (int i = 0; i < maxVisibleLength; i++) {
 				if (i < content.size()) {
-					Process p = (Process) content.get(i);
+					Process p = content.get(i);
 					p.draw(g, w - (i + 1) * w / (maxVisibleLength + 1), 20, w / (maxVisibleLength + 1), h - 20);
 				} else {
 					g.setColor(Color.black);
@@ -131,7 +133,7 @@ public class Queue extends JPanel implements Constants {
 			g.drawString(heading, w / 2 - fm.stringWidth(heading) / 2, 15);
 			for (int i = 0; i < maxVisibleLength; i++) {
 				if (i < content.size()) {
-					Process p = (Process) content.get(i);
+					Process p = content.get(i);
 					p.draw(g, i * w / (maxVisibleLength + 1), 20, w / (maxVisibleLength + 1), h - 20);
 				} else {
 					g.setColor(Color.black);
@@ -144,5 +146,9 @@ public class Queue extends JPanel implements Constants {
 			g.drawLine(0, h, w, h);
 			break;
 		}
+	}
+	
+	public String toString() {
+		return content.toString();
 	}
 }

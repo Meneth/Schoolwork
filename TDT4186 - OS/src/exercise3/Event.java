@@ -59,4 +59,29 @@ public class Event implements Comparable {
 		Event e = (Event) o;
 		return (int) (time - e.time);
 	}
+	
+	public String toString() {
+		String s = "" + time + " - ";
+		switch (type) {
+		case Constants.NEW_PROCESS:
+			s += "New process";
+			break;
+		case Constants.END_PROCESS:
+			s += "End process";
+			break;
+		case Constants.SWITCH_PROCESS:
+			s += "Switch process";
+			break;
+		case Constants.IO_REQUEST:
+			s += "IO reqest";
+			break;
+		case Constants.END_IO:
+			s += "End IO";
+			break;
+
+		default:
+			break;
+		}
+		return s;
+	}
 }
