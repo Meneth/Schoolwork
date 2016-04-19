@@ -4,8 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Deque;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.DelayQueue;
 
 public class DecisionTree {
 	private static boolean random = true;
@@ -71,22 +76,23 @@ public class DecisionTree {
 	}
 	
 	private static double calculateGain(int a, List<Example> examples) {
-		int p1 = 0, p = 0;
-		int n1 = 0, n = 0;
+		int p_true = 0, p = 0;
+		int n_true = 0, n = 0;
 		
 		for (Example example : examples) {
 			if (example.classification) {
 				p++;
 				if (example.attributes[a])
-					p1++;
+					p_true++;
 			} else {
 				n++;
 				if (example.attributes[a])
-					n1++;
+					n_true++;
 			}
 		}
-		double e1 = calculateWeightedRemainder(p1, n1, p, n);
-		double e2 = calculateWeightedRemainder(p - p1, n - n1, p, n);
+		
+		double e1 = calculateWeightedRemainder(p_true, n_true, p, n);
+		double e2 = calculateWeightedRemainder(p - p_true, n - n_true, p, n);
 		
 		return calculateEntropy(p, n) - (e1 + e2);
 	}
@@ -97,14 +103,12 @@ public class DecisionTree {
 	
 	private static double calculateEntropy(double p, double n) {
 		double q = p / (p + n);
-		if (q == 1)
+		if (q == 1 || q == 0)
 			return 0;
 		double part1 = q * log2(q);
 		double part2 = (1 - q) * log2(1 - q);
 		double sum = part1 + part2;
 		return -sum;
-		
-		//return -(q * log2(q) + (1 - q) * log2(1 - q));
 	}
 	
 	private static double log2(double n) {
@@ -164,6 +168,30 @@ public class DecisionTree {
 		System.out.println("Correct: " + correct);
 		System.out.println("Total: " + test.size());
 		System.out.println();
+		
+		Deque<Node> nodes = new ArrayDeque<>();
+		Deque<Node> nextLevel = new ArrayDeque<>();
+		nodes.add(n);
+		System.out.println("Importance decision tree:");
+		System.out.println(n);
+		int size = 1;
+		do {
+			nextLevel.clear();
+			while (!nodes.isEmpty()) {
+				n = nodes.pop();
+				if (n.attribute != -1) {
+					System.out.print(n.left + " ");
+					System.out.print(n.right + " ");
+					nextLevel.push(n.left);
+					nextLevel.push(n.right);
+				}
+			}
+			System.out.println();
+			nodes = new ArrayDeque<>(nextLevel);
+			size += nextLevel.size();
+		} while (!nextLevel.isEmpty());
+		System.out.println();
+		System.out.println("Size: " + size);
 	}
 	
 	private static List<Example> readExamples(String fileName) throws IOException {
@@ -226,5 +254,10 @@ class Example {
 	public Example(boolean[] attributes, boolean classification) {
 		this.attributes = attributes;
 		this.classification = classification;
+	}
+
+	@Override
+	public String toString() {
+		return "Example [attributes=" + Arrays.toString(attributes) + ", classification=" + classification + "]";
 	}
 }
