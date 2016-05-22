@@ -19,6 +19,9 @@
 #include "Image.h"
 #include "Shape.h"
 #include "Line.h"
+#include "Rectangle.h"
+#include "Circle.h"
+#include "Canvas.h"
 
 #include <iostream>
 #include <stdexcept>

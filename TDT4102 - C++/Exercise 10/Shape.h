@@ -2,6 +2,10 @@
 
 #include "Image.h"
 
+struct Pos {
+	int x, y;
+};
+
 class Shape {
 	Color color;
 

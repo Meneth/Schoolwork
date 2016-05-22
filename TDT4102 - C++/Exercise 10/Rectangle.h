@@ -2,10 +2,10 @@
 
 #include "Shape.h"
 
-class Line : public Shape {
+class Rectangle : public Shape {
 	Pos start, end;
 public:
 	void draw(Image &image);
 
-	Line(Pos start, Pos end, Color color);
+	Rectangle(Pos start, Pos end, Color color);
 };
